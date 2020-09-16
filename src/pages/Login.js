@@ -59,7 +59,7 @@ class Login extends Component {
                             <button 
                                 class="waves-effect waves-light btn"
                                 type="submit">
-                                Register
+                                Login
                             </button>
                         </div>
                     </div>   
