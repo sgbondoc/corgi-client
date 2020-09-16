@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UserModel from '../models/user'
+import '../App.css'
 
 class Login extends Component {
     state = {
@@ -32,10 +33,11 @@ class Login extends Component {
     render() {
         return (
             <div>
+                <div className="login-card">
                 <h4>Login</h4>
                 <form onSubmit={ this.handleSubmit }> 
                     <div>
-                        <div className="login-form-group">
+                        <div className="login-form-card">
                         
                             <input
                                 onChange={ this.handleChange }
@@ -54,11 +56,15 @@ class Login extends Component {
                                 placeholder="password"
                                 value={ this.state.password }
                             />
-                        
-                            <button type="submit">Login</button>
+                            <button 
+                                class="waves-effect waves-light btn"
+                                type="submit">
+                                Register
+                            </button>
                         </div>
-                    </div>
-                </form>     
+                    </div>   
+                </form>   
+                </div>   
             </div>
         )
     }    

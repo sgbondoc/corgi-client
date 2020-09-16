@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UserModel from '../models/user'
+import '../App.css'
 
 class Register extends Component {
     state = {
@@ -32,10 +33,10 @@ class Register extends Component {
     render() {
         return (
             <div>
+                <div className="register-card">
                 <h4>Register</h4>
-                <form onSubmit={ this.handleSubmit }>
-                    <div className="card">
-                        <div className="register-form-group">
+                    <form onSubmit={ this.handleSubmit }>
+                        <div className="register-form-card">
                             
                             <input
                                 onChange={ this.handleChange }
@@ -63,11 +64,14 @@ class Register extends Component {
                                 placeholder="password"
                                 value={ this.state.password }
                             />
-
-                            <button type="submit">Register</button>
+                            <button 
+                                class="waves-effect waves-light btn"
+                                type="submit">
+                                Register
+                            </button>
                         </div>
-                    </div>
-                </form>    
+                    </form>
+                </div>        
             </div>
         )
     }    
