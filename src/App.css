@@ -8,7 +8,8 @@ a {
 
 .login-card,
 .register-card,
-.create-post-card {
+.create-post-card,
+.chat-container {
     padding: 20px;
     text-align: center;
     max-width: 400px;
