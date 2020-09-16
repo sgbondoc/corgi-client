@@ -21,6 +21,7 @@ class Login extends Component {
             if (!data.user) {
                 return false
             }
+            // set logged in user data in browser local storage
             localStorage.setItem('jwt', data.token)
             localStorage.setItem('user', JSON.stringify(data.user))
             this.props.history.push('/profile')
@@ -45,7 +46,6 @@ class Login extends Component {
                                 value={ this.state.email }
                             />
                     
-                        
                             <input
                                 onChange={ this.handleChange }
                                 type="password"
