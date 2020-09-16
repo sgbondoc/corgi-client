@@ -11,7 +11,7 @@ export default class UserModel {
     }
 
     static async login(credentials) {
-        const response = await fetch(`${url}/auth/login`, {
+        const response = await fetch('/login', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",

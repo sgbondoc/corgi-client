@@ -17,15 +17,16 @@ class Register extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         UserModel.create(this.state)
-            .then(data => {
-                console.log(data)
-                this.setState({
-                    name: '',
-                    email: '',
-                    password: ''
-                })
-                this.props.history.push('/login')
+        .then(data => {
+            console.log(data)
+            this.setState({
+                name: '',
+                email: '',
+                password: ''
             })
+            this.props.history.push('/login')
+        })
+        .catch(err => console.log(err))
     }
     
     render() {
@@ -56,7 +57,7 @@ class Register extends Component {
 
                             <input
                                 onChange={ this.handleChange }
-                                type="text"
+                                type="password"
                                 id="password"
                                 name="password"
                                 placeholder="password"
