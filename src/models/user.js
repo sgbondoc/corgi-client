@@ -16,15 +16,15 @@ export default class UserModel {
             headers: { "Content-Type": "application/json" },
             credentials: "include",
             body: JSON.stringify(credentials)
-         })
-         return await response.json()
-     }
+        })
+        return await response.json()
+    }
 
      static async logout() {
        const response = await fetch(`${url}/auth/logout`, {
              method: "DELETE",
              credentials: "include",
-         })
-         return await response.json()
-      }
+        })
+        return await response.json()
+    }
 }
