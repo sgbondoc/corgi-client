@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import CreatePost from './pages/CreatePost'
 import './App.css'
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path ='/profile'>
         <Profile />
+      </Route>
+      <Route path ='/createpost'>
+        <CreatePost />
       </Route>
     </BrowserRouter>
   )
