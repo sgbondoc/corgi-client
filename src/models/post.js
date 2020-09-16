@@ -2,7 +2,7 @@ const url = process.env.REACT_APP_API_URL || 'http://localhost:5000'
 
 class PostModel {
     static all = async () => {
-        const response = await fetch(`${url}/posts`)
+        const response = await fetch('/posts')
         return await response.json()
     }
 

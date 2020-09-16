@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import CreatePost from './pages/CreatePost'
+import AllPosts from './pages/AllPosts'
 import './App.css'
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
       </Route>
       <Route path ='/createpost'>
         <CreatePost />
+      </Route>
+      <Route path ='/posts'>
+        <AllPosts />
       </Route>
     </BrowserRouter>
   )
