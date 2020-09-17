@@ -33,45 +33,47 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <div className="register-card">
-                <h4>Register</h4>
-                    <form onSubmit={ this.handleSubmit }>
-                        <div className="register-form-card">
-                            
-                            <input
-                                onChange={ this.handleChange }
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="username"
-                                value={ this.state.name }
-                            />
-        
-                            <input
-                                onChange={ this.handleChange }
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="email"
-                                value={ this.state.email }
-                            />
+                <div className="card">
+                    <div className="register-card">
+                    <h4>Register</h4>
+                        <form onSubmit={ this.handleSubmit }>
+                            <div className="register-form-card">
+                                
+                                <input
+                                    onChange={ this.handleChange }
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="username"
+                                    value={ this.state.name }
+                                />
+            
+                                <input
+                                    onChange={ this.handleChange }
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="email"
+                                    value={ this.state.email }
+                                />
 
-                            <input
-                                onChange={ this.handleChange }
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="password"
-                                value={ this.state.password }
-                            />
-                            <button 
-                                class="waves-effect waves-light btn"
-                                type="submit">
-                                Register
-                            </button>
-                        </div>
-                    </form>
-                </div>        
+                                <input
+                                    onChange={ this.handleChange }
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="password"
+                                    value={ this.state.password }
+                                />
+                                <button 
+                                    className="waves-effect waves-light btn"
+                                    type="submit">
+                                    Register
+                                </button>
+                            </div>
+                        </form>
+                    </div>  
+                </div>          
             </div>
         )
     }    

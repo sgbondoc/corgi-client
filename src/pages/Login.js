@@ -33,37 +33,39 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <div className="login-card">
-                <h4>Login</h4>
-                <form onSubmit={ this.handleSubmit }> 
-                    <div>
-                        <div className="login-form-card">
+                <div className="card">
+                    <div className="login-card">
+                    <h4>Login</h4>
+                    <form onSubmit={ this.handleSubmit }> 
+                        <div>
+                            <div className="login-form-card">
+                            
+                                <input
+                                    onChange={ this.handleChange }
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="email"
+                                    value={ this.state.email }
+                                />
                         
-                            <input
-                                onChange={ this.handleChange }
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="email"
-                                value={ this.state.email }
-                            />
-                    
-                            <input
-                                onChange={ this.handleChange }
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="password"
-                                value={ this.state.password }
-                            />
-                            <button 
-                                class="waves-effect waves-light btn"
-                                type="submit">
-                                Login
-                            </button>
-                        </div>
-                    </div>   
-                </form>   
+                                <input
+                                    onChange={ this.handleChange }
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="password"
+                                    value={ this.state.password }
+                                />
+                                <button 
+                                    className="waves-effect waves-light btn"
+                                    type="submit">
+                                    Login
+                                </button>
+                            </div>
+                        </div>   
+                    </form>   
+                    </div>
                 </div>   
             </div>
         )
