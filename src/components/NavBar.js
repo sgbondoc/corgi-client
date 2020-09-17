@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../App.css'
+
 
 const NavBar = (props) => {
     return (
         <nav>
             <div className="nav-wrapper white">
                 <Link to="/" className="brand-logo left">Corgi Connect</Link>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <ul id="nav-mobile" className="right">
                     
                     { props.currentUser ?
                         <>

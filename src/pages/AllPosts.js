@@ -14,6 +14,18 @@ const AllPosts = () => {
         })
     }, [])
 
+    const deletePost = (postId) => {
+        fetch(`/deletepost/${postId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('jwt')
+            }
+        }).then(response => response.json())
+        .then(result => {
+            console.log(result)
+        })
+    }
+
     return (
         <div className="allposts">
             {

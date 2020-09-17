@@ -5,9 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: azure;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.nav-wrapper {
+  padding-left: 10px;
+}
+
+a {
+  color: black !important;
+  text-decoration: none;
+}   
+
+h1, h2, h4 {
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 15px;
+}
+
+.login-card,
+.register-card,
+.create-post-card,
+.chat-container {
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.my-post {
+  width: 30%;
+  margin: 8px;
+}
+
+.allposts-card {
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
 }
