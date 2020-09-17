@@ -6,7 +6,7 @@ const Chat = () => {
     const [room, setRoom] = useState('')
 
     return (
-        <div className="chat-container">
+        <div className="card chat-container">
             <div className="chat-form-container">
                 <h4>Corgi Connect Chat</h4>
                     <div>
@@ -30,11 +30,15 @@ const Chat = () => {
                             setRoom(event.target.value))}
                     />
                     </div>
-
+                    
                     <Link 
                         onClick={ event => (!name || !room) ? event.preventDefault() : null }
-                        to={ `/chatnow?name=${name}&room=${room}` }>
-                        <button type="submit">Chat Now</button>
+                        to={`/chatnow?name=${name}&room=${room}`}>
+                        <button
+                            className="waves-effect waves-light btn"
+                            type="submit">
+                            Chat Now
+                        </button>
                     </Link>
             </div>
         </div>
