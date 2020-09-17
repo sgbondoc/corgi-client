@@ -21,9 +21,9 @@ export default class UserModel {
     }
 
      static async logout() {
-       const response = await fetch(`${url}/auth/logout`, {
-             method: "DELETE",
-             credentials: "include",
+       const response = await fetch('/logout', {
+            method: "DELETE",
+            credentials: "include",
         })
         return await response.json()
     }

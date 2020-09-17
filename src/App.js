@@ -1,31 +1,48 @@
-import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
+import Routes from './config/routes'
 import NavBar from './components/NavBar'
-import Home from './pages/Home'
-import Register from './pages/Register'
-import Login from './pages/Login'
-import Profile from './pages/Profile'
-import CreatePost from './pages/CreatePost'
-import AllPosts from './pages/AllPosts'
-import Chat from './pages/Chat'
-import ChatNow from './pages/ChatNow'
+import UserModel from './models/user'
+
 import './App.css'
 
+function App (props) {
+  const [currentUser, setCurrentUser] = useState({
+    _id: localStorage.getItem('_id'),
+    name: localStorage.getItem('name'),
+    email: localStorage.getItem('email')
+  })
 
-function App() {
+  const storeUser = (user) => {
+    setCurrentUser(user)
+    localStorage.setItem('_id', user._id)
+    localStorage.setItem('name', user.name)
+    localStorage.setItem('email', user.email)
+  }
+
+  const logout = (event) => {
+    event.preventDefault()
+    localStorage.clear()
+    UserModel.logout()
+      .then(response => {
+        console.log(response);
+        setCurrentUser(null)
+        props.history.push('/login')
+      })
+  }
+
   return (
-    <Router>
-      <NavBar />
-      <Route exact path ='/' component={ Home } />
-      <Route path ='/register' component={ Register } />
-      <Route path ='/login' component={ Login } />
-      <Route path ='/profile' component={ Profile } />
-      <Route path ='/createpost' component={ CreatePost } />
-      <Route path ='/posts' component={ AllPosts } />
-      <Route path ='/chat' component={ Chat } />
-      <Route path ='/chatnow' component={ ChatNow } />
-    </Router>
+    <div className="App">
+      <NavBar
+        currentUser={ currentUser }
+        logout={ logout }
+      />
+      <Routes
+        currentUser={ currentUser }
+        storeUser={ storeUser }
+      />
+    </div>
   )
 }
 
-export default App
+export default withRouter(App)
