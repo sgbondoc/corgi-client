@@ -13,7 +13,7 @@ const Chat = () => {
                     <input
                         className="chat-input"
                         type="text"
-                        placeholder=""
+                        placeholder="enter preferred username"
                         onChange={(
                             event => 
                             setName(event.target.value))}
@@ -24,16 +24,16 @@ const Chat = () => {
                     <input
                         className="chat-input"
                         type="text"
-                        placeholder=""
+                        placeholder="enter corgi to chat globally"
                         onChange={(
                             event => 
                             setRoom(event.target.value))}
                     />
                     </div>
-                    
+
                     <Link 
-                    onclick={ event => (!name || !room) ? event.preventDefault() : null }
-                    to={ `/chatnow?name=${name}&room=${room}` }>
+                        onClick={ event => (!name || !room) ? event.preventDefault() : null }
+                        to={ `/chatnow?name=${name}&room=${room}` }>
                         <button type="submit">Chat Now</button>
                     </Link>
             </div>
