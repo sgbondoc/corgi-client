@@ -29,46 +29,44 @@ const Register = () => {
 
     return (
         <div>
-            <div className="card">
-                <div className="register-card">
-                    <h4>Register</h4>
-                        <div className="register-form-card">
-                            
-                            <input
-                                onChange={(event) => setName(event.target.value)}
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="username"
-                                value={ name }
-                            />
-        
-                            <input
-                                onChange={(event) => setEmail(event.target.value)}
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="email"
-                                value={ email }
-                            />
+            <div className=" card register-card">
+                <h4>Register</h4>
+                    <div className="register-form-card">
+                        
+                        <input
+                            onChange={(event) => setName(event.target.value)}
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="username"
+                            value={ name }
+                        />
+    
+                        <input
+                            onChange={(event) => setEmail(event.target.value)}
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder="email"
+                            value={ email }
+                        />
 
-                            <input
-                                onChange={(event) => setPassword(event.target.value)}
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="password"
-                                value={ password }
-                            />
-                            <button 
-                                className="waves-effect waves-light btn"
-                                onClick={() => handleSubmit()}
-                                >
-                                Register
-                            </button>
-                        </div>
-                </div>  
-            </div>          
+                        <input
+                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="password"
+                            value={ password }
+                        />
+                        <button 
+                            className="waves-effect waves-light btn"
+                            onClick={() => handleSubmit()}
+                            >
+                            Register
+                        </button>
+                    </div>
+            </div>  
         </div>
     )
 }
