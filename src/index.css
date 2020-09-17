@@ -54,4 +54,14 @@ h1, h2, h4 {
   max-width: 500px;
   height: max-content;
   margin: 26px auto;
+  padding: 8px;
+}
+
+.post-username {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.allposts-card-content {
+  padding-left: 10px;
 }

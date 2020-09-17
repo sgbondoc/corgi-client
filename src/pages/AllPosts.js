@@ -31,15 +31,15 @@ const AllPosts = () => {
             {
                 data.map(item => {
                     return(
-                        <div className="allposts-card" key={ item._id }>
-                            <h5>{ item.user.name }</h5>
+                        <div className="card allposts-card" key={ item._id }>
+                            <h5 className="post-username">{ item.user.name }</h5>
                             <div className="card-image">
                                 <img src={ item.imageUrl } alt="my post" />
                             </div>
                             <div className="card-content" />
-                                <h6>{ item.title }</h6>
-                                <p>{ item.caption }</p>
-                                <input
+                                <h5 className="allposts-card-content">{ item.title }</h5>
+                                <p className="allposts-card-content">{ item.caption }</p>
+                                <input className="allposts-card-content"
                                     type="text"
                                     placeholder="add a comment"
                                 />
