@@ -28,7 +28,7 @@ const CreatePost = () => {
             }).then(response => response.json())
             .then(data => {
                 console.log(data)
-                history.push('/')
+                history.push('/posts')
             }).catch(err => {
                 console.log(err)
             })
@@ -57,7 +57,7 @@ const CreatePost = () => {
 
     return (       
         <div>
-            <div className="create-post-card">
+            <div className="card create-post-card">
                 <h4>Create Post</h4>
                     <div>
                         <input 
@@ -76,17 +76,15 @@ const CreatePost = () => {
                             onChange={(event) => setCaption(event.target.value)}
                         />
 
-                        <form action="#">
-                            <div className="file-field input-field">
-                                <div className="btn">
-                                    <span>Add File</span>
-                                    <input type="file" onChange={(event) => setImage(event.target.files[0])}/>
-                                </div>
-                                <div className="file-path-wrapper">
-                                    <input className="file-path validate" type="text"/>
-                                </div>
+                        <div className="file-field input-field">
+                            <div className="btn">
+                                <span>File</span>
+                                <input type="file" onChange={(event) => setImage(event.target.files[0])}/>
                             </div>
-                        </form>
+                            <div className="file-path-wrapper">
+                                <input className="file-path validate" type="text"/>
+                            </div>
+                        </div>
 
                         <button 
                             className="waves-effect waves-light btn"
