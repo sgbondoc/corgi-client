@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import '../App.css'
 
@@ -10,11 +10,37 @@ const CreatePost = () => {
 
     const history = useHistory()
 
+    useEffect(() => {
+        // useEffect callback will be invoked when url changes
+        // condition needed to prevent useEffect when component mounts
+        if (url) {
+            fetch('/createpost', {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem('jwt')
+                },
+                body: JSON.stringify({
+                    title,
+                    caption,
+                    url
+                })    
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data)
+                history.push('/')
+            }).catch(err => {
+                console.log(err)
+            })
+        }    
+    }, [url])
+
     const handleSubmit = () => {
         const data = new FormData()
         data.append('file', image)
         data.append('upload_preset', 'corgi-connect')
         data.append('cloud_name', 'sbgarcia')
+        
         fetch('https://api.cloudinary.com/v1_1/sbgarcia/image/upload', {
             method: "POST",
             body: data
@@ -25,21 +51,6 @@ const CreatePost = () => {
             setUrl(data.url)
         })
         .catch(err => {
-            console.log(err)
-        })
-        fetch('/createpost', {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({
-                title,
-                caption,
-                url
-            })    
-        }).then(response => response.json())
-        .then(data => {
-            console.log(data)
-            history.push('/')
-        }).catch(err => {
             console.log(err)
         })
     }
