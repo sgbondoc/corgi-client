@@ -20,12 +20,14 @@ const Profile = () => {
         <div style={{maxWidth: "550px", margin: "0px auto"}}>  
             <h2>My Posts</h2>
                 <div className="gallery">
-                    { userPosts.map(item => {
-                            return (
-                                <img key={ item._id } className="my-post" src={ item.imageUrl } alt={ item.title }/>
-                            )
-                        })
-                    }
+                        { userPosts.map(item => {
+                                return (
+                                    // <div className="myposts-card" key={ item._id }>
+                                        <img className="my-post" src={ item.imageUrl } alt={ item.title }/>
+                                    // </div>
+                                )
+                            })
+                        }
                 </div>
         </div>
     )

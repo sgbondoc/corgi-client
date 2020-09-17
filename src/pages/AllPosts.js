@@ -28,8 +28,7 @@ const AllPosts = () => {
 
     return (
         <div className="allposts">
-            {
-                data.map(item => {
+            { data.map(item => {
                     return(
                         <div className="card allposts-card" key={ item._id }>
                             <h5 className="post-username">{ item.user.name }</h5>
