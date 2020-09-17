@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../App.css'
 
 const Profile = () => {
+    const [userPosts, setUserPosts] = useState([])
+
+    useEffect(() => {
+        fetch('/myposts', {
+            headers: { 
+                "Authorization": "Bearer " + localStorage.getItem('jwt')
+            }    
+        }).then(response => response.json())
+        .then(result => {
+            console.log(result)
+            setUserPosts(result.myPosts)
+        })
+    }, [])
+
     return (
         <div style={{maxWidth: "550px", margin: "0px auto"}}>  
             <div style={{
@@ -18,7 +32,7 @@ const Profile = () => {
                     />
                 </div>
                 <div style={{borderBottom: "1px solid grey"}}>
-                    <h4>Sharon Grace</h4>
+                    <h4>My Posts</h4>
                     <div>
                         <h6>sharon@sharon.com</h6>
                         <h6>Edna Mode</h6>
@@ -27,13 +41,16 @@ const Profile = () => {
                         <h6>I love my kongs</h6>
                     </div> 
                 </div>
+
             <div className="gallery">
-                <img className="my-post" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="my post" />
-                <img className="my-post" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="my post" />
-                <img className="my-post" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="my post" />
-                <img className="my-post" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="my post" />
-                <img className="my-post" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="my post" />
-                <img className="my-post" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="my post" />            
+                {
+                    userPosts.map(item => {
+                        return (
+                            <img  key={ item._id } className="my-post" src={ item.imageUrl } alt={ item.title } />
+                        )
+                    })
+                }
+               
             </div>
             </div>
         </div>

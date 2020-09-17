@@ -12,7 +12,7 @@ const AllPosts = () => {
         .then(result => {
             setData(result.posts)
         })
-    },[])
+    }, [])
 
     return (
         <div className="allposts">
