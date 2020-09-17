@@ -1,61 +1,42 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import PostModel from '../models/post'
+import React, { useState, useEffect } from 'react'
+import '../App.css'
 
-
-class AllPosts extends Component {
-    state = {
-        posts: []
-    }
-
-    componentDidMount() {
-        this.fetchData()
-    }
-    
-    fetchData = () => {
-        PostModel.all().then((data) => {
-            console.log(data)
-            this.setState({ posts: data.posts })
+const AllPosts = () => {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        fetch('/posts', {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('jwt')
+            }
+        }).then(response => response.json())
+        .then(result => {
+            setData(result.posts)
         })
-    }
+    },[])
 
-    render() {
-        let AllPosts = this.state.posts.map((post, index) => {
-            return (
-                <div className="post-container" key={ index }>
-                    <div className="post-info">
-                        
-
-                        <div className="row">
-                            <div className="col s12 m7">
-                                <div className="card">
-                                    <div className="card-image">
-                                        <img src="images/sample-1.jpg" alt="title"></img>
-                                        <span className="card-title">Card Title</span>
-                                    </div>
-                                        <div className="card-content">
-                                            <p>I am a very simple card. I am good at containing small bits of information.
-                                            I am convenient because I require little markup to use effectively.</p>
-                                        </div>
-                                    <div className="card-action">
-                                        <a href="#">This is a link</a>
-                                    </div>
-                                </div>
+    return (
+        <div className="allposts">
+            {
+                data.map(item => {
+                    return(
+                        <div className="allposts-card" key={ item._id }>
+                            <h5>{ item.user.name }</h5>
+                            <div className="card-image">
+                                <img src={ item.imageUrl } alt="my post" />
                             </div>
+                            <div className="card-content" />
+                                <h6>{ item.title }</h6>
+                                <p>{ item.caption }</p>
+                                <input
+                                    type="text"
+                                    placeholder="add a comment"
+                                />
                         </div>
-
-                        
-                    </div>
-                </div>    
-            )
-        })
-
-        return (
-            <>
-            <div className="posts-gallery">{ AllPosts }</div>
-            </>
-        )
-    }
+                    )
+                })
+            }
+        </div>
+    )
 }
 
 export default AllPosts

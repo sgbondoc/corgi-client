@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
-import { Col, Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap'
 import '../App.css'
 
 const CreatePost = () => {
