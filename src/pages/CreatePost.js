@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
+import { Col, Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap'
 import '../App.css'
 
 const CreatePost = () => {
@@ -55,7 +56,7 @@ const CreatePost = () => {
         })
     }
 
-    return (
+    return (       
         <div>
             <div className="create-post-card">
                 <h4>Create Post</h4>
@@ -76,15 +77,17 @@ const CreatePost = () => {
                             onChange={(event) => setCaption(event.target.value)}
                         />
 
-                        <div className="file-field input-field">
-                        <div className="btn">
-                            <span>Add Image</span>
-                            <input type="file" onChange={(event) => setImage(event.target.files[0])}/>
-                        </div>
-                        <div className="file-path-wrapper">
-                            <input className="file-path validate" type="text"/>
-                        </div>
-                        </div>
+                        <form action="#">
+                            <div className="file-field input-field">
+                                <div className="btn">
+                                    <span>Add File</span>
+                                    <input type="file" onChange={(event) => setImage(event.target.files[0])}/>
+                                </div>
+                                <div className="file-path-wrapper">
+                                    <input className="file-path validate" type="text"/>
+                                </div>
+                            </div>
+                        </form>
 
                         <button 
                             className="waves-effect waves-light btn"
