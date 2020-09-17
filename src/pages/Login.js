@@ -1,75 +1,68 @@
-import React, { Component } from 'react'
-import UserModel from '../models/user'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import '../App.css'
 
-class Login extends Component {
-    state = {
-        email: '',
-        password: ''
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
+const Login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     
-    handleSubmit = (event) => {
-        event.preventDefault()
-        UserModel.login(this.state)
+    const history = useHistory()
+
+    const handleSubmit = () => {
+        fetch('/login', {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({
+                email,
+                password
+            })    
+        }).then(response => response.json())
         .then(data => {
             console.log(data)
-            if (!data.user) {
-                return false
-            }
             // set logged in user data in browser local storage
             localStorage.setItem('jwt', data.token)
             localStorage.setItem('user', JSON.stringify(data.user))
-            this.props.history.push('/profile')
+            history.push('/')
+        }).catch(err => {
+            console.log(err)
         })
-        .catch(err => console.log(err))
     }
 
-    render() {
-        return (
-            <div>
-                <div className="card">
-                    <div className="login-card">
-                    <h4>Login</h4>
-                    <form onSubmit={ this.handleSubmit }> 
-                        <div>
-                            <div className="login-form-card">
+    return (
+        <div>
+            <div className="card">
+                <div className="login-card">
+                    <h4>Login</h4> 
+                        <div className="login-form-card">
                             
-                                <input
-                                    onChange={ this.handleChange }
-                                    type="text"
-                                    id="email"
-                                    name="email"
-                                    placeholder="email"
-                                    value={ this.state.email }
-                                />
-                        
-                                <input
-                                    onChange={ this.handleChange }
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    placeholder="password"
-                                    value={ this.state.password }
-                                />
-                                <button 
-                                    className="waves-effect waves-light btn"
-                                    type="submit">
-                                    Login
-                                </button>
-                            </div>
-                        </div>   
-                    </form>   
-                    </div>
-                </div>   
-            </div>
-        )
-    }    
+                            <input
+                                onChange={(event) => setEmail(event.target.value)}
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="email"
+                                value={ email }
+                            />
+
+                            <input
+                                onChange={(event) => setPassword(event.target.value)}
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="password"
+                                value={ password }
+                            />
+                            <button 
+                                className="waves-effect waves-light btn"
+                                onClick={() => handleSubmit()}
+                                >
+                                Login
+                            </button>
+                        </div>         
+                </div>
+            </div>   
+        </div>
+    )
 }
 
 export default Login
