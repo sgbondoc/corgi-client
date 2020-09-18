@@ -17,7 +17,7 @@ const Profile = () => {
     }, [])
 
     return (
-        <div style={{maxWidth: "550px", margin: "0px auto"}}>  
+        <div style={{maxWidth: "700px", margin: "0px auto"}}>  
             <h2>My Posts</h2>
                 <div className="gallery">
                         { userPosts.map(item => {
