@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import '../App.css'
+import React, { useState, useEffect, useContext } from 'react'
+import { UserContext } from '../App'
 
 const AllPosts = () => {
     const [data, setData] = useState([])
+    const {state, dispatch} = useContext(UserContext)
+
     useEffect(() => {
         fetch('/posts', {
             headers: {
@@ -23,6 +25,10 @@ const AllPosts = () => {
         }).then(response => response.json())
         .then(result => {
             console.log(result)
+            const newData = data.filter(item => {
+                return item._id !== result._id
+            })
+            setData(newData)
         })
     }
 
@@ -31,16 +37,19 @@ const AllPosts = () => {
             { data.map(item => {
                     return(
                         <div className="card allposts-card" key={ item._id }>
-                            <h5 className="post-username">{ item.user.name } 
-                            <i class="material-icons"
-                                style={{ float: "right" }}>
-                                delete</i>
-                            </h5> 
+                            <h5 className="post-username">{ item.user.name }</h5> 
                             <div className="card-image">
                                 <img src={ item.imageUrl } alt="my post" />
                             </div>
                             <div className="card-content" />
-                                <h5 className="allposts-card-content">{ item.title }</h5>
+                                <h5 className="allposts-card-content">{ item.title }
+                                    { item.user._id === state._id 
+                                    && <i class="material-icons"
+                                        style={{ float: "right" }}
+                                        onClick={() => deletePost(item._id)}>
+                                        delete</i>
+                                    }
+                                </h5>
                                 <p className="allposts-card-content">{ item.caption }</p>
                                 <input className="allposts-card-content"
                                     type="text"
