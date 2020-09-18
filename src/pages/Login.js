@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router'
+import { UserContext } from '../App'
 import '../App.css'
 
-const Login = (props) => {
+const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     
+    const {state, dispatch} = useContext(UserContext)
     const history = useHistory()
 
     const handleSubmit = () => {
@@ -22,7 +24,7 @@ const Login = (props) => {
             // set logged in user data in browser local storage
             localStorage.setItem('jwt', data.token)
             localStorage.setItem('user', JSON.stringify(data.user))
-            // this.props.storeUser(data.token)
+            dispatch({type: "USER", payload: data.user})
             history.push('/')
         }).catch(err => {
             console.log(err)
