@@ -31,7 +31,11 @@ const AllPosts = () => {
             { data.map(item => {
                     return(
                         <div className="card allposts-card" key={ item._id }>
-                            <h5 className="post-username">{ item.user.name }</h5>
+                            <h5 className="post-username">{ item.user.name } 
+                            <i class="material-icons"
+                                style={{ float: "right" }}>
+                                delete</i>
+                            </h5> 
                             <div className="card-image">
                                 <img src={ item.imageUrl } alt="my post" />
                             </div>
