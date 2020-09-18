@@ -8,7 +8,7 @@ const Chat = () => {
     return (
         <div className="card chat-container">
             <div className="chat-form-container">
-                <h4>Corgi Connect Chat</h4>
+                <h4>Corgi Chat</h4>
                     <div>
                     <input
                         className="chat-input"

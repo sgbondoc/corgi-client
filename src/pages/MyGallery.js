@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../App.css'
 
-const Profile = () => {
+const MyGallery = () => {
     const [userPosts, setUserPosts] = useState([])
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const Profile = () => {
 
     return (
         <div style={{maxWidth: "700px", margin: "0px auto"}}>  
-            <h2>My Posts</h2>
+            <h2>My Corgi Gallery</h2>
                 <div className="gallery">
                         { userPosts.map(item => {
                                 return (
@@ -31,4 +31,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default MyGallery
