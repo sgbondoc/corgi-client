@@ -17,7 +17,7 @@ const Messages = () => {
         })
     }, [])
 
-    const deletePost = (messageId) => {
+    const deleteMessage = (messageId) => {
         fetch(`/deletemessage/${messageId}`, {
             method: "DELETE",
             headers: {
@@ -71,7 +71,7 @@ const Messages = () => {
                                 { item.user._id === state._id
                                 && <i className="material-icons"
                                 style={{ float: "right" }}
-                                onClick={() => deletePost(item._id)}>
+                                onClick={() => deleteMessage(item._id)}>
                                 delete</i>
                                 }
                                 </h5> 
