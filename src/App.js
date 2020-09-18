@@ -13,12 +13,12 @@ import { reducer, initialState } from './reducers/userReducer'
 export const UserContext = createContext()
 
 
-// need history as app doesn't initial state history
+// need history as app doesn't have initial state history
 const Routing = () => {
   const history = useHistory()
   const {state, dispatch} = useContext(UserContext)
   useEffect(() => {
-      // local storage stores as string -> convert to object
+      // local storage stores user data as string -> convert to object
       const user = JSON.parse(localStorage.getItem('user'))
           if (user) {
               dispatch({type: "USER", payload: user})

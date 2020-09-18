@@ -8,7 +8,7 @@ const Home = (props) => {
           <Jumbotron fluid>
             <Container fluid>
               <h2 className="display-3">All the Corgis</h2>
-              <p className="lead">Be a part of a community that puts their short legged friends first</p>
+              <p className="lead">Join a community that puts their short legged friends first</p>
             </Container>
           </Jumbotron>
         </div>
