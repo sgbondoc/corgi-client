@@ -13,7 +13,9 @@ const NavBar = () => {
             return [
                 <li><Link to="/mygallery">My Gallery</Link></li>,
                 <li><Link to="/createpost">Create Post</Link></li>,
-                <li><Link to="/posts">All Posts</Link></li>,
+                <li><Link to="/posts">Posts</Link></li>,
+                <li><Link to="/createmessage">Create Message</Link></li>,
+                <li><Link to="/messages">Messages</Link></li>,
                 <li>
                     <Link
                         onClick={() => {

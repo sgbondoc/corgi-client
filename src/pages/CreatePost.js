@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
-import '../App.css'
 
 const CreatePost = () => {
     const [title, setTitle] = useState('')

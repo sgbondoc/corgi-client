@@ -7,6 +7,8 @@ import Login from './pages/Login'
 import MyGallery from './pages/MyGallery'
 import CreatePost from './pages/CreatePost'
 import AllPosts from './pages/AllPosts'
+import CreateMessage from './pages/CreateMessage'
+import Messages from './pages/Messages'
 import { reducer, initialState } from './reducers/userReducer'
 export const UserContext = createContext()
 
@@ -32,6 +34,8 @@ const Routing = () => {
           <Route path ='/mygallery' component={ MyGallery } />
           <Route path ='/createpost' component={ CreatePost } />
           <Route path ='/posts' component={ AllPosts } />
+          <Route path ='/createmessage' component={ CreateMessage } />
+          <Route path ='/messages' component={ Messages } />
           <Route path ='/register' component={ Register } />
           <Route path ='/login' component={ Login } />
       </Switch>
