@@ -7,8 +7,6 @@ import Login from './pages/Login'
 import MyGallery from './pages/MyGallery'
 import CreatePost from './pages/CreatePost'
 import AllPosts from './pages/AllPosts'
-import Chat from './pages/Chat'
-import ChatNow from './pages/ChatNow'
 import { reducer, initialState } from './reducers/userReducer'
 export const UserContext = createContext()
 
@@ -34,8 +32,6 @@ const Routing = () => {
           <Route path ='/mygallery' component={ MyGallery } />
           <Route path ='/createpost' component={ CreatePost } />
           <Route path ='/posts' component={ AllPosts } />
-          <Route path ='/chat' component={ Chat } />
-          <Route path ='/chatnow' component={ ChatNow } />
           <Route path ='/register' component={ Register } />
           <Route path ='/login' component={ Login } />
       </Switch>

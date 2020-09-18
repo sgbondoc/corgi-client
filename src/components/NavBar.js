@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../App'
 
 
-const NavBar = (props) => {
+const NavBar = () => {
     const {state, dispatch} = useContext(UserContext)
     const history = useHistory()
     
@@ -14,7 +14,6 @@ const NavBar = (props) => {
                 <li><Link to="/mygallery">My Gallery</Link></li>,
                 <li><Link to="/createpost">Create Post</Link></li>,
                 <li><Link to="/posts">All Posts</Link></li>,
-                <li><Link to="/chat">Chat</Link></li>,
                 <li>
                     <Link
                         onClick={() => {
