@@ -1,24 +1,36 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../App'
 
 
 const NavBar = (props) => {
     const {state, dispatch} = useContext(UserContext)
+    const history = useHistory()
+    
     const renderList =  () => {
-        // state now has details of the user (id, name, email)
+        // state can now have details of the user (id, name, email)
         if (state) {
             return [
                 <li><Link to="/mygallery">My Gallery</Link></li>,
                 <li><Link to="/createpost">Create Post</Link></li>,
                 <li><Link to="/posts">All Posts</Link></li>,
                 <li><Link to="/chat">Chat</Link></li>,
-                <li><Link to="/logout">Logout</Link></li>
+                <li>
+                    <Link
+                        onClick={() => {
+                            localStorage.clear()
+                            dispatch({type: "CLEAR"})
+                            history.push('/login')
+                        }}
+                        >
+                        Logout
+                    </Link>
+                </li>
             ]
         } else {
             return [
                 <li><Link to="/register">Register</Link></li>,
-                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/Login">Login</Link></li>
             ]    
         }
     }
