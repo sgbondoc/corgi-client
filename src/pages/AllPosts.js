@@ -81,10 +81,13 @@ const AllPosts = () => {
                                 {
                                     item.comments.map(entry => {
                                         return (
-                                        <h6 key={ entry._id}><span 
-                                            style={{fontWeight: "500"}}>
-                                            { entry.user.name }
-                                        </span>: { entry.text }
+                                        <h6 className="allposts-comment"
+                                            key={ entry._id}>
+                                            <span 
+                                                style={{fontWeight: "500"}}>
+                                                { entry.user.name }
+                                            </span>
+                                            : { entry.text }
                                         </h6>
                                         )
                                     })
@@ -94,7 +97,7 @@ const AllPosts = () => {
                                     showComment(event.target[0].value, item._id)
                                     event.target.reset()
                                 }}>
-                                <input className="allposts-card-content"
+                                <input className="allposts-card-input"
                                     type="text"
                                     placeholder="add a comment"
                                 />

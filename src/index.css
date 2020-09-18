@@ -87,3 +87,11 @@ h1, h2, h4 {
 .allposts-card-content {
   padding-left: 10px;
 }
+
+.allposts-comment {
+  padding-left: 10px;
+}
+
+.allposts-card-input {
+  padding-left: 10px;
+}
