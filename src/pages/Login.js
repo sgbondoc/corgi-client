@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import '../App.css'
 
-const Login = () => {
+const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     
@@ -22,6 +22,7 @@ const Login = () => {
             // set logged in user data in browser local storage
             localStorage.setItem('jwt', data.token)
             localStorage.setItem('user', JSON.stringify(data.user))
+            // this.props.storeUser(data.token)
             history.push('/')
         }).catch(err => {
             console.log(err)

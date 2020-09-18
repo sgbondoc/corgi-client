@@ -7,17 +7,11 @@ import UserModel from './models/user'
 import './App.css'
 
 function App (props) {
-  const [currentUser, setCurrentUser] = useState({
-    _id: localStorage.getItem('_id'),
-    name: localStorage.getItem('name'),
-    email: localStorage.getItem('email')
-  })
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('jwt'))
 
-  const storeUser = (user) => {
-    setCurrentUser(user)
-    localStorage.setItem('_id', user._id)
-    localStorage.setItem('name', user.name)
-    localStorage.setItem('email', user.email)
+  const storeUser = (token) => {
+    setCurrentUser({ currentUser: token })
+    localStorage.setItem('jwt', token)
   }
 
   const logout = (event) => {
