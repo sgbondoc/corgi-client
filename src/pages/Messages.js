@@ -96,7 +96,7 @@ const Messages = () => {
                                 }}>
                                 <input className="messages-card-content"
                                     type="text"
-                                    placeholder="add a comment"
+                                    placeholder="add a reply"
                                 />
                                 </form>
                         </div>
