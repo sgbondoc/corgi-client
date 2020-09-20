@@ -1,29 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../App'
+import PostModel from '../models/post'
 
 const Posts = () => {
     const [data, setData] = useState([])
     const {state, dispatch} = useContext(UserContext)
 
     useEffect(() => {
-        fetch('/posts', {
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            }
-        }).then(response => response.json())
-        .then(result => {
-            setData(result.posts)
+        PostModel.all().then((data) => {
+            setData(data.posts)
         })
     }, [])
 
     const deletePost = (postId) => {
-        fetch(`/deletepost/${postId}`, {
-            method: "DELETE",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            }
-        }).then(response => response.json())
-        .then(result => {
+       PostModel.delete(postId).then((result) => {
             console.log(result)
             const newData = data.filter(item => {
                 return item._id !== result._id
@@ -33,18 +23,7 @@ const Posts = () => {
     }
 
     const showComment = (text, postId) => {
-        fetch('/comment', {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            },
-            body: JSON.stringify({
-                text,
-                postId
-            })
-        }).then(response => response.json())
-        .then(result => {
+        PostModel.show(text, postId).then((result) => {
             console.log(result)
             const newData = data.map(item => {
                 if (item._id === result._id){
@@ -54,9 +33,7 @@ const Posts = () => {
                 }
             })
             setData(newData)
-        }).catch(err => {
-            console.log(err)
-        })
+        }).catch(err => {console.log(err)})
     }
 
     return (
