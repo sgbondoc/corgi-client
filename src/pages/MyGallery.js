@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import '../App.css'
+import PostModel from '../models/post'
 
 const MyGallery = () => {
     const [userPosts, setUserPosts] = useState([])
 
     useEffect(() => {
-        fetch('/myposts', {
-            headers: { 
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            }    
-        }).then(response => response.json())
-        .then(result => {
+        PostModel.showMyPosts().then(result => {
             console.log(result)
             setUserPosts(result.myPosts)
         })
