@@ -21,7 +21,7 @@ const NavBar = () => {
                         onClick={() => {
                             localStorage.clear()
                             dispatch({type: "CLEAR"})
-                            history.push('/login')
+                            history.push('/fun')
                         }}
                         >
                         Logout

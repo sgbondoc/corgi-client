@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
-// import Logout from './pages/Logout'
+import Fun from './pages/Fun'
 import MyGallery from './pages/MyGallery'
 import CreatePost from './pages/CreatePost'
 import AllPosts from './pages/AllPosts'
@@ -39,7 +39,7 @@ const Routing = () => {
           <Route path ='/messages' component={ Messages } />
           <Route path ='/register' component={ Register } />
           <Route path ='/login' component={ Login } />
-          {/* <Route path ='/logout' component={ Logout } /> */}
+          <Route path ='/fun' component={ Fun } />
       </Switch>
   )    
 }
