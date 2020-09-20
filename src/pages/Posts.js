@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../App'
 
-const AllPosts = () => {
+const Posts = () => {
     const [data, setData] = useState([])
     const {state, dispatch} = useContext(UserContext)
 
@@ -110,4 +110,4 @@ const AllPosts = () => {
     )
 }
 
-export default AllPosts
+export default Posts

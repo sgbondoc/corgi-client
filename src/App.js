@@ -7,7 +7,7 @@ import Login from './pages/Login'
 import Fun from './pages/Fun'
 import MyGallery from './pages/MyGallery'
 import CreatePost from './pages/CreatePost'
-import AllPosts from './pages/AllPosts'
+import Posts from './pages/Posts'
 import CreateMessage from './pages/CreateMessage'
 import Messages from './pages/Messages'
 import { reducer, initialState } from './reducers/userReducer'
@@ -34,7 +34,7 @@ const Routing = () => {
           <Route exact path ='/' component={ Home } />
           <Route path ='/mygallery' component={ MyGallery } />
           <Route path ='/createpost' component={ CreatePost } />
-          <Route path ='/posts' component={ AllPosts } />
+          <Route path ='/posts' component={ Posts } />
           <Route path ='/createmessage' component={ CreateMessage } />
           <Route path ='/messages' component={ Messages } />
           <Route path ='/register' component={ Register } />
