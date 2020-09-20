@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+import MessageModel from '../models/message'
 
 
 const CreateMessage = () => {
@@ -9,18 +10,7 @@ const CreateMessage = () => {
     const history = useHistory()
 
     const handleSubmit = () => {
-        fetch('/createmessage', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            },
-            body: JSON.stringify({
-                subject,
-                body
-            })    
-        }).then(response => response.json())
-        .then(data => {
+        MessageModel.create(subject, body).then(data => {
             console.log(data)
             history.push('/messages')
         }).catch(err => {
