@@ -17,7 +17,10 @@ const MyGallery = () => {
                 <div className="gallery">
                         { userPosts.map(item => {
                                 return (
-                                    <img key={ item._id } className="my-post" src={ item.imageUrl } alt={ item.title }/>
+                                    <img key={ item._id } className="my-post" 
+                                        src={ item.imageUrl } 
+                                        alt={ item.title }
+                                    />
                                 )
                             })
                         }
