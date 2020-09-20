@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router'
 import { UserContext } from '../App'
-import '../App.css'
+import UserModel from '../models/user'
+
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -11,15 +12,7 @@ const Login = () => {
     const history = useHistory()
 
     const handleSubmit = () => {
-        fetch('/login', {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({
-                email,
-                password
-            })    
-        }).then(response => response.json())
-        .then(data => {
+        UserModel.login(email, password) .then(data => {
             console.log(data)
             // set logged in user data in browser local storage
             localStorage.setItem('jwt', data.token)

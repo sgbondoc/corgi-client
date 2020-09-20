@@ -1,74 +1,76 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router'
-import '../App.css'
+import React, { Component } from 'react'
+import UserModel from '../models/user'
 
-const Register = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    
-    const history = useHistory()
+class Register extends Component {
+    state = {
+        name: '',
+        email: '',
+        password: '',
+    }
 
-    const handleSubmit = () => {
-        fetch('/register', {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({
-                name,
-                email,
-                password
-            })    
-        }).then(response => response.json())
-        .then(data => {
-            console.log(data)
-            history.push('/login')
-        }).catch(err => {
-            console.log(err)
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
         })
     }
 
-    return (
-        <div>
-            <div className=" card register-card">
-                <h4>Register</h4>
-                    <div className="register-form-card">
-                        
-                        <input
-                            onChange={(event) => setName(event.target.value)}
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="username"
-                            value={ name }
-                        />
-    
-                        <input
-                            onChange={(event) => setEmail(event.target.value)}
-                            type="text"
-                            id="email"
-                            name="email"
-                            placeholder="email"
-                            value={ email }
-                        />
+    handleSubmit = (event) => {
+        event.preventDefault()
+        UserModel.create(this.state)
+            .then(data => {
+                this.setState({
+                    name: '',
+                    email: '',
+                    password: ''
+                })
+                this.props.history.push('/login')
+            })
+    }        
 
-                        <input
-                            onChange={(event) => setPassword(event.target.value)}
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="password"
-                            value={ password }
-                        />
-                        <button 
-                            className="waves-effect waves-light btn"
-                            onClick={() => handleSubmit()}
-                            >
-                            Register
-                        </button>
-                    </div>
-            </div>  
-        </div>
-    )
+    render () {
+        return (
+            <div>
+                <div className=" card register-card">
+                    <h4>Register</h4>
+                        <div className="register-form-card">
+                            
+                            <input
+                                onChange={ this.handleChange }
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="username"
+                                value={ this.state.name }
+                            />
+        
+                            <input
+                                onChange={ this.handleChange }
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="email"
+                                value={ this.state.email }
+                            />
+
+                            <input
+                                onChange={ this.handleChange }
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="password"
+                                value={ this.state.password }
+                            />
+                            <button 
+                                className="waves-effect waves-light btn"
+                                onClick={ this.handleSubmit }
+                                >
+                                Register
+                            </button>
+                        </div>
+                </div>  
+            </div>
+        )
+    }
 }
 
 export default Register
