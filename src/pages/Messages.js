@@ -1,30 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../App'
+import MessageModel from '../models/message'
 
 const Messages = () => {
     const [data, setData] = useState([])
     const {state, dispatch} = useContext(UserContext)
 
     useEffect(() => {
-        fetch('/messages', {
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            }
-        }).then(response => response.json())
-        .then(result => {
+        MessageModel.all().then(result => {
             setData(result.messages)
             console.log(result.messages)
         })
     }, [])
 
     const deleteMessage = (messageId) => {
-        fetch(`/deletemessage/${messageId}`, {
-            method: "DELETE",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            }
-        }).then(response => response.json())
-        .then(result => {
+        MessageModel.delete(messageId).then(result => {
             console.log(result)
             const newData = data.filter(item => {
                 return item._id !== result._id
@@ -34,18 +24,7 @@ const Messages = () => {
     }
 
     const showReply = (text, messageId) => {
-        fetch('/reply', {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem('jwt')
-            },
-            body: JSON.stringify({
-                text,
-                messageId
-            })
-        }).then(response => response.json())
-        .then(result => {
+        MessageModel.show(text, messageId).then(result => {
             console.log(result)
             const newData = data.map(item => {
                 if (item._id === result._id){
