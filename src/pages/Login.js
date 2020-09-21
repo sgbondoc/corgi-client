@@ -2,11 +2,6 @@ import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router'
 import { UserContext } from '../App'
 import UserModel from '../models/user'
-import {
-    Container, Col, Form,
-    FormGroup, Label, Input,
-    Button,
-} from 'reactstrap'
 
 
 const Login = () => {
@@ -30,51 +25,37 @@ const Login = () => {
     }
 
     return (
-        <Container className="Login">
-            <div className="login-card">
+        <div>
+            <div className="card login-card">
                 <h4>Login</h4> 
                     <div className="login-form-card">
-                        <Form className="form">
-                            <Col>
-                                <FormGroup>
-                                    <div className="login-form-group">
-                                        <Label for="email" hidden>Email</Label>
-                                            <Input
-                                                onChange={(event) => setEmail(event.target.value)}
-                                                type="text"
-                                                id="email"
-                                                name="email"
-                                                placeholder="email"
-                                                value={ email }
-                                            />
-                                    </div>
-                                </FormGroup>
-                            </Col>
-                            <Col>
-                                <FormGroup> 
-                                    <div className="login-form-group">
-                                        <Label for="password" hidden>Password</Label>
-                                            <Input
-                                                onChange={(event) => setPassword(event.target.value)}
-                                                type="password"
-                                                id="password"
-                                                name="password"
-                                                placeholder="password"
-                                                value={ password }
-                                            />
-                                    </div>
-                                </FormGroup>
-                            </Col>
-                                <Button 
-                                    className="waves-effect waves-light btn"
-                                    onClick={() => handleSubmit()}
-                                    >
-                                    Login
-                                </Button>
-                        </Form>        
+                        
+                        <input
+                            onChange={(event) => setEmail(event.target.value)}
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder="email"
+                            value={ email }
+                        />
+
+                        <input
+                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="password"
+                            value={ password }
+                        />
+                        <button 
+                            className="waves-effect waves-light btn"
+                            onClick={() => handleSubmit()}
+                            >
+                            Login
+                        </button>
                     </div>         
             </div>
-        </Container>
+        </div>
     )
 }
 

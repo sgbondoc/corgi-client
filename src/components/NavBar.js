@@ -37,16 +37,14 @@ const NavBar = () => {
     }
 
     return (
-        <div class="navbar-fixed">
-            <nav>
-                <div className="nav-wrapper #eceff1 blue-grey lighten-5">
-                    <Link to="/" className="brand-logo left">CORGI CONNECT</Link>
-                    <ul id="nav-mobile" className="right">
-                        { renderList() }            
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        <nav>
+            <div className="nav-wrapper #eceff1 blue-grey lighten-5">
+                <Link to="/" className="brand-logo left">CORGI CONNECT</Link>
+                <ul id="nav-mobile" className="right">
+                    { renderList() }            
+                </ul>
+            </div>
+        </nav>
     )
 }
 

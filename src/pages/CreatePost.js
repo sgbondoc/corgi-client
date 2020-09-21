@@ -36,9 +36,7 @@ const CreatePost = () => {
             console.log(data)
             setUrl(data.url)
         })
-        .catch(err => {
-            console.log(err)
-        })
+        .catch(err => {console.log(err)})
     }
 
     return (       
@@ -61,16 +59,18 @@ const CreatePost = () => {
                             value={ caption }
                             onChange={(event) => setCaption(event.target.value)}
                         />
-
-                        <div className="file-field input-field">
-                            <div className="btn">
-                                <span>File</span>
-                                <input type="file" onChange={(event) => setImage(event.target.files[0])}/>
+                        
+                        <form onChange={(event) => setImage(event.target.files[0])}>
+                            <div className="file-field input-field">
+                                <div className="btn">
+                                    <span>File</span>
+                                    <input type="file"/>
+                                </div>
+                                <div className="file-path-wrapper">
+                                    <input className="file-path validate" type="text"/>
+                                </div>
                             </div>
-                            <div className="file-path-wrapper">
-                                <input className="file-path validate" type="text"/>
-                            </div>
-                        </div>
+                        </form>    
 
                         <button 
                             className="waves-effect waves-light btn"
