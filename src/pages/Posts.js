@@ -14,7 +14,6 @@ const Posts = () => {
 
     const deletePost = (postId) => {
        PostModel.delete(postId).then((result) => {
-            console.log(result)
             const newData = data.filter(item => {
                 return item._id !== result._id
             })
@@ -24,7 +23,6 @@ const Posts = () => {
 
     const showComment = (text, postId) => {
         PostModel.show(text, postId).then((result) => {
-            console.log(result)
             const newData = data.map(item => {
                 if (item._id === result._id){
                     return result

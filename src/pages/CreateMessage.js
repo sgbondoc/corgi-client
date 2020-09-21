@@ -11,7 +11,6 @@ const CreateMessage = () => {
 
     const handleSubmit = () => {
         MessageModel.create(subject, body).then(data => {
-            console.log(data)
             history.push('/messages')
         }).catch(err => {
             console.log(err)

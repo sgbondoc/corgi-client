@@ -6,7 +6,6 @@ const MyGallery = () => {
 
     useEffect(() => {
         PostModel.showMyPosts().then(result => {
-            console.log(result)
             setUserPosts(result.myPosts)
         })
     }, [])

@@ -13,7 +13,6 @@ const Login = () => {
 
     const handleSubmit = () => {
         UserModel.login(email, password) .then(data => {
-            console.log(data)
             // set logged in user data in browser local storage
             localStorage.setItem('jwt', data.token)
             localStorage.setItem('user', JSON.stringify(data.user))

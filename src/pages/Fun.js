@@ -17,9 +17,7 @@ class Fun extends Component {
         fetch(this.corgiGifUrl)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 this.setState({ corgis: data.data })
-                console.log(this.state)
             })
     }
 

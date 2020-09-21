@@ -15,7 +15,6 @@ const CreatePost = () => {
         // condition needed to prevent useEffect when component mounts
         if (url) {
             PostModel.create(title, caption, url).then(data => {
-                console.log(data)
                 history.push('/posts')
             }).catch(err => {console.log(err)})
         }    
@@ -33,7 +32,6 @@ const CreatePost = () => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             setUrl(data.url)
         })
         .catch(err => {console.log(err)})

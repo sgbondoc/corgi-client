@@ -9,13 +9,11 @@ const Messages = () => {
     useEffect(() => {
         MessageModel.all().then(result => {
             setData(result.messages)
-            console.log(result.messages)
         })
     }, [])
 
     const deleteMessage = (messageId) => {
         MessageModel.delete(messageId).then(result => {
-            console.log(result)
             const newData = data.filter(item => {
                 return item._id !== result._id
             })
@@ -25,7 +23,6 @@ const Messages = () => {
 
     const showReply = (text, messageId) => {
         MessageModel.show(text, messageId).then(result => {
-            console.log(result)
             const newData = data.map(item => {
                 if (item._id === result._id){
                     return result
