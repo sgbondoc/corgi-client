@@ -60,8 +60,7 @@ const Posts = () => {
                                         return (
                                         <h6 className="allposts-comment"
                                             key={ entry._id}>
-                                            <span 
-                                                style={{fontWeight: "500"}}>
+                                            <span className="user-name">
                                                 { entry.user.name }
                                             </span>
                                             : { entry.text }

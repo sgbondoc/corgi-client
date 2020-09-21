@@ -20,7 +20,7 @@ const CreateMessage = () => {
     
     return (
         <div>
-            <div className="card message-card">
+            <div className="card create-message-card">
                 <h4>Create Message</h4>
                     <div className="message-form-card">
     
