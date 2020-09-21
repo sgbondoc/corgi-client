@@ -58,6 +58,10 @@ h1, h2, h4 {
   width: 50%;
 }
 
+.register-card {
+  color: black !important;
+}
+
 .login-card,
 .register-card,
 .create-post-card,
