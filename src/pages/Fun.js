@@ -11,7 +11,7 @@ class Fun extends Component {
         this.fetchData()
     }
 
-    corgiGifUrl = `http://api.giphy.com/v1/gifs/search?q=corgi&limit=25&api_key=${API_KEY}`
+    corgiGifUrl = `http://api.giphy.com/v1/gifs/search?q=corgi&limit=15&api_key=${API_KEY}`
     
     fetchData = () => {
         fetch(this.corgiGifUrl)
