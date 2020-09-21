@@ -17,11 +17,13 @@ export const UserContext = createContext()
 // need history as app doesn't have initial state history
 const Routing = () => {
   const history = useHistory()
+  // useContext to return current user values for auth, then dispatch down
   const {state, dispatch} = useContext(UserContext)
   useEffect(() => {
       // local storage stores user data as string -> convert to object
       const user = JSON.parse(localStorage.getItem('user'))
           if (user) {
+              // dispatch will indicate user info
               dispatch({type: "USER", payload: user})
               history.push('/')
           } else {
@@ -46,7 +48,7 @@ const Routing = () => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
-  // using reducer to initialize state and dispatch
+  // using reducer to initialize state and dispatch down
   return (
     <UserContext.Provider value={{ state, dispatch }}>
     <BrowserRouter>

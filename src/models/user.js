@@ -20,12 +20,12 @@ export default class UserModel {
          return await response.json()
     }
 
-    static async logout() {
-        const response = await fetch('/logout', {
-                method: "DELETE",
-                credentials: "include",
-        })
-        return await response.json()
-    }
+    // static async logout() {
+    //     const response = await fetch('/logout', {
+    //             method: "DELETE",
+    //             credentials: "include",
+    //     })
+    //     return await response.json()
+    // }
    
 }
