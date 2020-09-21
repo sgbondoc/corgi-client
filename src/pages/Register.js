@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import UserModel from '../models/user'
+import {
+    Container, Col, Form,
+    FormGroup, Label,
+    Button, Input
+} from 'reactstrap'
 
 class Register extends Component {
     state = {
@@ -29,46 +34,64 @@ class Register extends Component {
 
     render () {
         return (
-            <div>
-                <div className=" card register-card">
-                    <h4>Register</h4>
-                        <div className="register-form-card">
-                            
-                            <input
-                                onChange={ this.handleChange }
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="username"
-                                value={ this.state.name }
-                            />
-        
-                            <input
-                                onChange={ this.handleChange }
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="email"
-                                value={ this.state.email }
-                            />
 
-                            <input
-                                onChange={ this.handleChange }
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="password"
-                                value={ this.state.password }
-                            />
-                            <button 
-                                className="waves-effect waves-light btn"
-                                onClick={ this.handleSubmit }
-                                >
-                                Register
-                            </button>
-                        </div>
-                </div>  
-            </div>
+                <Container className="register-card">
+                    <h4>Register</h4>
+                        <Form className="register-form-card">
+                            <Col>
+                                <FormGroup>
+                                    <div className="register-form-group">  
+                                        <Label for="name" hidden>Name</Label>
+                                        <Input
+                                            onChange={ this.handleChange }
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            placeholder="username"
+                                            value={ this.state.name }
+                                        />
+                                    </div>    
+                                </FormGroup>
+                            </Col>
+                            <Col>
+                                <FormGroup>
+                                    <div className="register-form-group">       
+                                        <Label htmlFor="name" hidden>Email</Label>           
+                                        <Input
+                                            onChange={ this.handleChange }
+                                            type="text"
+                                            id="email"
+                                            name="email"
+                                            placeholder="email"
+                                            value={ this.state.email }
+                                        />
+                                    </div>    
+                                </FormGroup>
+                            </Col>
+                            <Col>
+                                <FormGroup>   
+                                    <div className="register-form-group">
+                                        <Label htmlFor="name" hidden>Password</Label>           
+                                        <Input
+                                            onChange={ this.handleChange }
+                                            type="password"
+                                            id="password"
+                                            name="password"
+                                            placeholder="password"
+                                            value={ this.state.password }
+                                        />
+                                    </div>    
+                                </FormGroup>
+                            </Col>
+                                <Button 
+                                    className="waves-effect waves-light btn"
+                                    onClick={ this.handleSubmit }
+                                    >
+                                    Register
+                                </Button>   
+                        </Form>
+                </Container>  
+        
         )
     }
 }
